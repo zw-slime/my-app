@@ -1,18 +1,20 @@
-import { Action } from "@ngrx/store";
+import { ActionReducer, ActionReducerMap, MetaReducer } from "@ngrx/store";
+import { routerReducer, RouterReducerState } from "@ngrx/router-store";
+import { RouterStateUrl } from "./router-ngrx";
 
-export const INCREMENT = "INCREMENT";
-export const DECREMENT = "DECREMENT";
-export const RESET = "RESET";
-
-export function reducer(state: number = 0, action: Action) {
-  switch (action.type) {
-    case INCREMENT:
-      return state + 1;
-    case DECREMENT:
-      return state - 1;
-    case RESET:
-      return 0;
-    default:
-      return state;
-  }
+export interface State {
+  router: RouterReducerState<RouterStateUrl>;
 }
+
+export const reducers: ActionReducerMap<State> = {
+  router: routerReducer
+};
+
+export function debug(reducer: ActionReducer<any>): ActionReducer<any> {
+  return (state, action) => {
+    console.warn(state + ":" + action);
+    return reducer(state, action);
+  };
+}
+
+export const metaReducers: MetaReducer<any>[] = [debug];

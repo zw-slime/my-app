@@ -188,7 +188,7 @@
   left: 18px;
   border-radius: 50% 50% 50% 50%;
   background-image: radial-gradient(
-    50% 50%,
+    closest-side at 50% 50%,
     rgba(253, 214, 240, 0.8) 0%,
     rgba(253, 224, 244, 0.8) 66%,
     rgba(253, 234, 247, 0.8) 100%
@@ -300,7 +300,7 @@
   background: #2e2e2e;
   position: absolute;
   left: 50%;
-  top: 8px;
+  top: -1px;
   margin-left: -2px;
 }
 .cat-mouse-2 {
@@ -357,11 +357,11 @@
   0% {
     width: 50px;
     border-radius: 0% 40% 50% 20%;
-    margin-left: -52px;
+    margin-left: -50px;
   }
   100% {
     width: 40px;
-    margin-left: -42px;
+    margin-left: -40px;
     border-radius: 50% 50% 50% 50%;
   }
 }
